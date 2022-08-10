@@ -1,0 +1,67 @@
+﻿@model CIP.Web.Models.Especialidad.EspecialidadAddEditViewModel
+
+@{
+    ViewBag.Title = "Especialidades";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Especialidades</h1>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-dashboard"></i> <a href="@Url.Action("Index", "Especialidad")">Especialidades</a></li>
+            //<li><i class="fa fa-list"></i> <a href="@Url.Action("Index", "Postulante")">Postulantes</a></li>
+            <li class="active"><i class="fa fa-edit"></i></li> Administrar Especialidad
+        </ol>
+    </div>
+</div>
+
+@if (TempData["MensajeAddEditEspecialidad"] != null)
+{
+    <div class="alert alert-info">
+        @TempData["MensajeAddEditEspecialidad"]
+    </div>
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading text-box main-text">
+        Administrar Especialidad
+    </div>
+    <div class="panel-body">
+
+        @Html.ValidationSummary()
+
+        @using (Html.BeginForm("AddEdit", "Especialidad"))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.HiddenFor(x => x.IdEspecialidad)
+
+            <div class="form-group">
+                <label>Especialidad</label>
+                @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Descripcion</label>
+                @Html.TextAreaFor(x => x.Descripcion, new { @class = "form-control" })
+            </div>
+
+            @*<div class="form-group">
+                <label>Telefono</label>
+                @Html.TextBoxFor(x => x.Telefono, new { @class = "form-control" })
+            </div>*@
+
+            @*<div class="form-group">
+                <label>Especialidad</label>
+                @Html.DropDownListFor(x => x.Especialidades, new SelectList(Model.ListEspecialidades, "IdEspecialidad", "Nombre"), "[-Seleccione-]", new { @class = "form-control" })
+            </div>*@
+
+            <button class="btn btn-primary square-btn-adjust" type="submit"><i class="fa fa-save"></i> Guardar</button>
+            <a href="@Url.Action("Index", "Especialidad")" class="btn btn-danger square-btn-adjust"><i class="fa fa-arrow-left"></i> Cancelar</a>
+        }
+
+    </div>
+</div>
+
+
+

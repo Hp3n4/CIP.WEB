@@ -46,17 +46,17 @@ namespace CIP.Web.Controllers
         {
             try
             {
-                var objPreguntaFrecuente = Contexto.Postulantes
+                var objPostulante = Contexto.Postulantes
                     .FirstOrDefault(x => x.IdPostulante == Idpostulante);// &&
                        // x.TipoPreguntaId == ConstantHelpers.TipoPregunta.PreguntaFrecuente);
 
-                if (objPreguntaFrecuente == null)
+                if (objPostulante == null)
                 {
                     TempData["MensajePostulante"] = "El registro no existe en BD.";
                     return RedirectToAction("Index");
                 }
 
-                Contexto.Postulantes.Remove(objPreguntaFrecuente);
+                Contexto.Postulantes.Remove(objPostulante);
                 Contexto.SaveChanges();
                 TempData["MensajePostulante"] = "El registro fue eliminado exitosamente.";
             }
@@ -68,7 +68,7 @@ namespace CIP.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        [RolAuthFilter(ConstanHelpers.Rol.Administrador)]
+        [RolAuthFilter(ConstanHelpers.Rol.Administrador, ConstanHelpers.Rol.Recepcionista))]
         public ActionResult AddEdit(int? Idpostulante)
         {
             var viewModel = new PostulanteAddEditViewModel();
@@ -81,7 +81,7 @@ namespace CIP.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [RolAuthFilter(ConstanHelpers.Rol.Administrador)]
+        [RolAuthFilter(ConstanHelpers.Rol.Administrador, ConstanHelpers.Rol.Recepcionista))]
         public ActionResult AddEdit(PostulanteAddEditViewModel viewModel)
         {
             try

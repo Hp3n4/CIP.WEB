@@ -128,6 +128,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EspecialidadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostulanteController.cs" />
     <Compile Include="Filters\RolAuthFilter.cs" />
@@ -135,6 +136,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HttpExtensionHelper.cs" />
+    <Compile Include="Models\Especialidad\EspecialidadAddEditViewModel.cs" />
+    <Compile Include="Models\Especialidad\EspecialidadDetailViewModel.cs" />
+    <Compile Include="Models\Especialidad\EspecialidadIndexViewModel.cs" />
     <Compile Include="Models\Postulante\PostulanteAddEditViewModel.cs" />
     <Compile Include="Models\Postulante\PostulanteDetailViewModel.cs" />
     <Compile Include="Models\Postulante\PostulanteIndexViewModel.cs" />
@@ -208,6 +212,9 @@
     <Content Include="Views\Postulante\Index.cshtml" />
     <Content Include="Views\Postulante\Detail.cshtml" />
     <Content Include="Views\Postulante\AddEdit.cshtml" />
+    <Content Include="Views\Especialidad\Index.cshtml" />
+    <Content Include="Views\Especialidad\AddEdit.cshtml" />
+    <Content Include="Views\Especialidad\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
